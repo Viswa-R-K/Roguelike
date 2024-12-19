@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public class BoardManager : MonoBehaviour
 {
@@ -9,32 +10,36 @@ public class BoardManager : MonoBehaviour
         public GameObject containedObject;
     }
 
-    public GameObject FoodPrefab;
+    public GameObject[] FoodPrefabs;
 
     private CellData[,] m_BoardData;
     private Tilemap m_Tilemap;
 
     private Grid m_Grid;
 
+    private List<Vector2Int> m_EmptyCellsList; 
+
     public PlayerController Player;
 
     public int Height;
     public int Width;
+    public int FoodCountRange;
     public Tile[] GroundTiles; 
 
     public Tile[] WallTiles;
 
     void GenerateFood(){
-        int foodCount = 5;
+        int foodCount = Random.Range(1,FoodCountRange);
+        
         for(int i = 0 ; i < foodCount ; i++){
-            int x = Random.Range(1,Width-1);
-            int y = Random.Range(1,Height-1);
-            CellData data = m_BoardData[x,y];
-            if(data.passable && data.containedObject == null){
-                GameObject newFood = Instantiate(FoodPrefab);
-                newFood.transform.position = CellToWorld(new Vector2Int(x,y));
-                data.containedObject = newFood;
-            }
+            int randomIndex = Random.Range(0,m_EmptyCellsList.Count);
+            Vector2Int coord = m_EmptyCellsList[randomIndex];
+            m_EmptyCellsList.RemoveAt(randomIndex);
+            CellData data = m_BoardData[coord.x,coord.y];
+            int foodPrefabindex = Random.Range(0,FoodPrefabs.Length);
+            GameObject newFood = Instantiate(FoodPrefabs[foodPrefabindex]);
+            newFood.transform.position = CellToWorld(coord);
+            data.containedObject = newFood;
         }
     }
 
@@ -54,6 +59,7 @@ public class BoardManager : MonoBehaviour
         m_Tilemap = GetComponentInChildren<Tilemap>();
         m_BoardData = new CellData[Width,Height];
         m_Grid = GetComponentInChildren<Grid>();
+        m_EmptyCellsList = new List<Vector2Int>();
 
         for(int y = 0; y < Height ; ++y){
             for(int x = 0 ; x < Width ; ++x){
@@ -66,10 +72,12 @@ public class BoardManager : MonoBehaviour
                 else{
                     tile = GroundTiles[Random.Range(0,GroundTiles.Length)];
                     m_BoardData[x,y].passable = true;
+                    m_EmptyCellsList.Add(new Vector2Int(x,y));
                 }
                 m_Tilemap.SetTile(new Vector3Int(x,y,0),tile);
             }
         }
+        m_EmptyCellsList.Remove(new Vector2Int(1,1));
         GenerateFood();
     }
 

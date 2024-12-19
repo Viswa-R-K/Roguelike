@@ -224,10 +224,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2c6ef322b63d486995d1b9712b3c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodPrefab: {fileID: 6740743001458495788, guid: eea4b2ee86c074387805ee94a8dfc9e2, type: 3}
+  FoodPrefabs:
+  - {fileID: 5636301079812824753, guid: 2e4c48f42c63bb67fabc860d000890ce, type: 3}
+  - {fileID: 329678555769109526, guid: 0c120a46134643c0b90a32e0de02ef92, type: 3}
+  - {fileID: 8154408876735429574, guid: 2879f3345ba186d07ad12500420c50d0, type: 3}
+  - {fileID: 7080349257530942900, guid: e13d68c12a3f9d628a887b3ef2668570, type: 3}
+  - {fileID: 6740743001458495788, guid: eea4b2ee86c074387805ee94a8dfc9e2, type: 3}
   Player: {fileID: 1354859727}
   Height: 8
   Width: 8
+  FoodCountRange: 7
   GroundTiles:
   - {fileID: 11400000, guid: b3108aac1103c32eab4feacf8d3aa84a, type: 2}
   - {fileID: 11400000, guid: a591e36e103ef77a0b3051edb6c1c381, type: 2}
