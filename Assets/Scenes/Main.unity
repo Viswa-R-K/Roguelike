@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2c6ef322b63d486995d1b9712b3c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FoodPrefab: {fileID: 6740743001458495788, guid: eea4b2ee86c074387805ee94a8dfc9e2, type: 3}
   Player: {fileID: 1354859727}
   Height: 8
   Width: 8

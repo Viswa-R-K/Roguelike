@@ -6,7 +6,10 @@ public class BoardManager : MonoBehaviour
 
     public class CellData{
         public bool passable;
+        public GameObject containedObject;
     }
+
+    public GameObject FoodPrefab;
 
     private CellData[,] m_BoardData;
     private Tilemap m_Tilemap;
@@ -20,6 +23,20 @@ public class BoardManager : MonoBehaviour
     public Tile[] GroundTiles; 
 
     public Tile[] WallTiles;
+
+    void GenerateFood(){
+        int foodCount = 5;
+        for(int i = 0 ; i < foodCount ; i++){
+            int x = Random.Range(1,Width-1);
+            int y = Random.Range(1,Height-1);
+            CellData data = m_BoardData[x,y];
+            if(data.passable && data.containedObject == null){
+                GameObject newFood = Instantiate(FoodPrefab);
+                newFood.transform.position = CellToWorld(new Vector2Int(x,y));
+                data.containedObject = newFood;
+            }
+        }
+    }
 
     public Vector3 CellToWorld(Vector2Int cellIndex){
         return m_Grid.GetCellCenterWorld((Vector3Int)cellIndex);
@@ -53,6 +70,7 @@ public class BoardManager : MonoBehaviour
                 m_Tilemap.SetTile(new Vector3Int(x,y,0),tile);
             }
         }
+        GenerateFood();
     }
 
     // Update is called once per frame
