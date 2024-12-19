@@ -24,6 +24,13 @@ public class BoardManager : MonoBehaviour
     public Vector3 CellToWorld(Vector2Int cellIndex){
         return m_Grid.GetCellCenterWorld((Vector3Int)cellIndex);
     }
+
+    public CellData GetCellData(Vector2Int cellIndex){
+        if(cellIndex.x < 0 || cellIndex.y < 0 || cellIndex.x >= Width || cellIndex.y >= Height){
+            return null;
+        }
+        return m_BoardData[cellIndex.x,cellIndex.y];
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
