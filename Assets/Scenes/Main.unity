@@ -225,11 +225,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FoodPrefabs:
-  - {fileID: 5636301079812824753, guid: 2e4c48f42c63bb67fabc860d000890ce, type: 3}
-  - {fileID: 329678555769109526, guid: 0c120a46134643c0b90a32e0de02ef92, type: 3}
-  - {fileID: 8154408876735429574, guid: 2879f3345ba186d07ad12500420c50d0, type: 3}
-  - {fileID: 7080349257530942900, guid: e13d68c12a3f9d628a887b3ef2668570, type: 3}
-  - {fileID: 6740743001458495788, guid: eea4b2ee86c074387805ee94a8dfc9e2, type: 3}
+  - {fileID: 2920233353454888850, guid: 2e4c48f42c63bb67fabc860d000890ce, type: 3}
+  - {fileID: 379576286730830317, guid: 0c120a46134643c0b90a32e0de02ef92, type: 3}
+  - {fileID: 7529826233371866519, guid: 2879f3345ba186d07ad12500420c50d0, type: 3}
+  - {fileID: -1789921303183845417, guid: e13d68c12a3f9d628a887b3ef2668570, type: 3}
+  - {fileID: 8175084548077390038, guid: eea4b2ee86c074387805ee94a8dfc9e2, type: 3}
   Player: {fileID: 1354859727}
   Height: 8
   Width: 8
@@ -660,6 +660,50 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1787986010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1787986012}
+  - component: {fileID: 1787986011}
+  m_Layer: 0
+  m_Name: FoodObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1787986011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787986010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf70abb8819af406915337b3eec69d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1787986012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787986010}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.6561894, y: 3.5155423, z: 0.041543674}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -669,3 +713,4 @@ SceneRoots:
   - {fileID: 1354859726}
   - {fileID: 233849283}
   - {fileID: 1646413965}
+  - {fileID: 1787986012}
