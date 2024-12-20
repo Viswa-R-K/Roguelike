@@ -22,10 +22,13 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    void OnTurnHappen(){
-        m_FoodAmount -= 1;
+    public void IncreaseFood(int Amount){
+        m_FoodAmount += Amount;
         m_FoodLabel.text = "Food : " + m_FoodAmount;
-        Debug.Log("Current food amount " + m_FoodAmount);
+    }
+
+    void OnTurnHappen(){
+        IncreaseFood(-1);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
