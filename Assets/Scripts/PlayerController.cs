@@ -48,8 +48,11 @@ public class PlayerController : MonoBehaviour
             BoardManager.CellData cellData = m_Board.GetCellData(newCellTarget);
             if(cellData != null && cellData.passable){
                 GameManager.Instance.turnManager.Tick();
-                MoveTo(newCellTarget);
-                if(cellData.containedObject != null){
+                if(cellData.containedObject == null){
+                    MoveTo(newCellTarget);
+                }
+                else if(cellData.containedObject.PlayerWantsToEnter()){
+                    MoveTo(newCellTarget);
                     cellData.containedObject.PlayerEntered();
                 }
             } 
