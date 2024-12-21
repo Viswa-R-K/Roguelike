@@ -46,6 +46,9 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    public Tile GetCellTile(Vector2Int cellIndex){
+        return m_Tilemap.GetTile<Tile>(new Vector3Int(cellIndex.x,cellIndex.y,0));
+    }
     public void SetCellTile(Vector2Int CellIndex,Tile tile){
         m_Tilemap.SetTile(new Vector3Int(CellIndex.x,CellIndex.y,0),tile);
     }
