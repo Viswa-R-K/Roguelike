@@ -4,6 +4,8 @@ using UnityEngine.Tilemaps;
 public class WallObject : CellObject
 {
     public Tile ObstacleTile;
+    public Tile SemiDamagedTile;
+    public Tile DamagedTile;
     public int HitPoints = 3;
 
     private int m_CurrentHitPoint;
@@ -13,7 +15,14 @@ public class WallObject : CellObject
     public override bool PlayerWantsToEnter()
     {
         m_CurrentHitPoint -= 1;
+        GameManager.Instance.IncreaseFood(-2);
         if(m_CurrentHitPoint > 0){
+            if(m_CurrentHitPoint == 2){
+                GameManager.Instance.boardManager.SetCellTile(m_Cell,SemiDamagedTile);
+            }
+            else if(m_CurrentHitPoint == 1){
+                GameManager.Instance.boardManager.SetCellTile(m_Cell,DamagedTile);
+            }
             return false;
         }
         GameManager.Instance.boardManager.SetCellTile(m_Cell,m_OriginalTile);

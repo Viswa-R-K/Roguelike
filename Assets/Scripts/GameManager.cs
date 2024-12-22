@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseFood(int Amount){
         m_FoodAmount += Amount;
-        m_FoodLabel.text = "Food : " + m_FoodAmount;
+        m_FoodLabel.text = "Energy : " + m_FoodAmount;
     }
 
     void OnTurnHappen(){
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         m_FoodLabel = uIDocument.rootVisualElement.Q<Label>("FoodLabel");
-        m_FoodLabel.text = "Food : " + m_FoodAmount;
+        m_FoodLabel.text = "Energy : " + m_FoodAmount;
         turnManager = new TurnManager();
         turnManager.OnTick += OnTurnHappen;
         boardManager.Init();
