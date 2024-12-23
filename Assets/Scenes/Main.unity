@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2c6ef322b63d486995d1b9712b3c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExitCellPrefab: {fileID: 2923196327381355367, guid: 0e26182d5af015d909dcc123ed7ddf8e, type: 3}
   WallPrefab: {fileID: 8374828703135022220, guid: c27fe94888095a3fabfb0a9025a39910, type: 3}
   FoodPrefabs:
   - {fileID: 2920233353454888850, guid: 2e4c48f42c63bb67fabc860d000890ce, type: 3}

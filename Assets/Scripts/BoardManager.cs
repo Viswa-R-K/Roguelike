@@ -9,6 +9,7 @@ public class BoardManager : MonoBehaviour
         public bool passable;
         public CellObject containedObject;
     }
+    public ExitCellObject ExitCellPrefab;
     public WallObject WallPrefab;
     public FoodObject[] FoodPrefabs;
 
@@ -46,6 +47,20 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    public void Clean(){
+        if(m_BoardData == null){
+            return;
+        }
+        for(int y = 0 ; y < Height ; y++){
+            for(int x = 0 ; x < Width ; x++){
+                var CellData = m_BoardData[x,y];
+                if(CellData.containedObject != null){
+                    Destroy(CellData.containedObject.gameObject);
+                }
+                SetCellTile(new Vector2Int(x,y),null);
+            }
+        }
+    }
     public Tile GetCellTile(Vector2Int cellIndex){
         return m_Tilemap.GetTile<Tile>(new Vector3Int(cellIndex.x,cellIndex.y,0));
     }
@@ -101,6 +116,10 @@ public class BoardManager : MonoBehaviour
             }
         }
         m_EmptyCellsList.Remove(new Vector2Int(1,1));
+
+        Vector2Int endCoord = new Vector2Int(Width-2,Height-2);
+        AddObject(Instantiate(ExitCellPrefab),endCoord);
+        m_EmptyCellsList.Remove(endCoord);
         GenerateWall();
         GenerateFood();
     }
