@@ -9,6 +9,16 @@ public class PlayerController : MonoBehaviour
     public float MoveSpeed = .05f;
     private bool m_IsMoving;
     private Vector3 m_MoveTarget;
+    private Animator m_Animator;
+
+    private void Awake(){
+        m_Animator = GetComponent<Animator>();
+        m_Animator.SetBool("Moving",false);
+    }
+
+    public void PlayerAttack(){
+        m_Animator.SetTrigger("Attack");
+    }
 
 
     public void Spawn(BoardManager boardManager, Vector2Int cell){
@@ -20,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public void Init(){
         m_IsMoving = false;
         m_IsGameOver = false;
+        m_Animator.SetBool("Moving",false);
     }
 
     public void GameOver(){
@@ -36,6 +47,7 @@ public class PlayerController : MonoBehaviour
             m_IsMoving = false;
             transform.position = m_Board.CellToWorld(cell);
         }
+        m_Animator.SetBool("Moving",m_IsMoving);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,6 +68,7 @@ public class PlayerController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position,m_MoveTarget,MoveSpeed);
             if(transform.position == m_MoveTarget){
                 m_IsMoving = false;
+                m_Animator.SetBool("Moving",false);
                 var cellData = m_Board.GetCellData(m_CellPosition);
                 if(cellData.containedObject != null){
                     cellData.containedObject.PlayerEntered();

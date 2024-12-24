@@ -12,11 +12,13 @@ public class WallObject : CellObject
     private Tile m_OriginalTile;
 
 
+
     public override bool PlayerWantsToEnter()
     {
         m_CurrentHitPoint -= 1;
         GameManager.Instance.IncreaseFood(-2);
         if(m_CurrentHitPoint > 0){
+            GameManager.Instance.playerController.PlayerAttack();
             if(m_CurrentHitPoint == 2){
                 GameManager.Instance.boardManager.SetCellTile(m_Cell,SemiDamagedTile);
             }

@@ -10,6 +10,9 @@ public class CellObject : MonoBehaviour
         return true;
     }
 
+    public virtual string CellType(){
+        return "Empty";
+    }
     public virtual void Init(Vector2Int cell){
         m_Cell = cell;
     }
