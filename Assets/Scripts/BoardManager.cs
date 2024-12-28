@@ -9,6 +9,7 @@ public class BoardManager : MonoBehaviour
         public bool passable;
         public CellObject containedObject;
     }
+    public EnemyObject EnemyObjectPrefab;
     public ExitCellObject ExitCellPrefab;
     public WallObject WallPrefab;
     public FoodObject[] FoodPrefabs;
@@ -68,6 +69,16 @@ public class BoardManager : MonoBehaviour
         m_Tilemap.SetTile(new Vector3Int(CellIndex.x,CellIndex.y,0),tile);
     }
 
+    void GenerateEnemy(){
+        int enemyCount = Random.Range(1,3);
+        for(int i = 0 ; i < enemyCount ; i++){
+            int randIndex = Random.Range(0,m_EmptyCellsList.Count);
+            Vector2Int coord = m_EmptyCellsList[randIndex];
+            m_EmptyCellsList.RemoveAt(randIndex);
+            EnemyObject newEnemy = Instantiate(EnemyObjectPrefab);
+            AddObject(newEnemy,coord);
+        }
+    }
     void GenerateFood(){
         int foodCount = Random.Range(1,FoodCountRange);
         
@@ -122,6 +133,7 @@ public class BoardManager : MonoBehaviour
         m_EmptyCellsList.Remove(endCoord);
         GenerateWall();
         GenerateFood();
+        GenerateEnemy();
     }
 
     // Update is called once per frame

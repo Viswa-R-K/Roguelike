@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
         m_Animator = GetComponent<Animator>();
         m_Animator.SetBool("Moving",false);
     }
-
+    public Vector2Int Cell(){
+        return m_CellPosition;
+    }
     public void PlayerAttack(){
         m_Animator.SetTrigger("Attack");
     }
